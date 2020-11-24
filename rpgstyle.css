@@ -1,0 +1,560 @@
+body
+{
+	width:100%;
+	background-color : black;
+	color:white;
+	margin:0;
+}
+h1 
+{
+	font-size:5em;
+	text-align:center;
+}
+/*  Start index.php  */
+.LoginContainer
+{
+	width: 50%;
+	margin-left:auto;
+	margin-right:auto;
+	display:flex;	
+	align-items:center;
+	justify-content:center;
+}
+.LoginContainer form
+{
+	width: 50%;
+	justify-content:center;
+}
+/*  Ende index.php  */
+
+/*  Start rpg.php  */
+.SpielerInfoContainer
+{
+	width: 280px;
+	height:500px;
+	margin-left:auto;
+	margin-right:auto;
+	display:flex;	
+	position: relative;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;
+	border: 5px outset grey;
+}
+.Spieler
+{
+	top:1px;
+}
+.Spielerbildrahmen
+{
+	position: absolute;
+	z-index:1;
+}
+.Spielerbild
+{
+	z-index:0;
+}
+.form
+{
+	position: absolute;
+	bottom: 1px;
+}
+
+.SpielerlisteContainer
+{
+	width: 280px;
+	height:500px;
+	margin-left:auto;
+	margin-right:auto;
+	display:flex;	
+	position: relative;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;
+	border: 5px outset grey;
+}
+.SpielerlisteContainer img
+{
+	width: 20px;
+	height: 20px;
+}
+
+.MarktplatzContainer
+{
+	width: 280px;
+	height:500px;
+	margin-left:auto;
+	margin-right:auto;
+	display:flex;	
+	position: relative;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;
+	border: 5px outset grey;
+}
+.KampfContainer
+{
+	width: 280px;
+	height:500px;
+	margin-left:auto;
+	margin-right:auto;
+	display:flex;	
+	position: relative;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;
+	border: 5px outset grey;
+}
+/*  Ende rpg.php  */
+
+/*  Start Marktplatz marktplatz.php  */
+
+.Überschrift 
+{
+	width:100px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.WaffenContainer
+{
+	width: 280px;
+	height:500px;
+	margin-left:auto;
+	margin-right:auto;
+	display:flex;	
+	position: relative;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;
+	border: 5px outset grey;
+}
+.WaffenContainer img
+{
+	width: 20px;
+	height: 20px;
+}
+.RuestungsContainer
+{
+	width: 280px;
+	height:500px;
+	margin-left:auto;
+	margin-right:auto;
+	display:flex;	
+	position: relative;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;
+	border: 5px outset grey;
+}
+.RuestungsContainer img
+{
+	width: 20px;
+	height: 20px;
+}
+.HeilstubeContainer
+{
+	width: 280px;
+	height:500px;
+	margin-left:auto;
+	margin-right:auto;
+	display:flex;	
+	position: relative;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;
+	border: 5px outset grey;
+}
+.HeilstubeContainer img
+{
+	width: 20px;
+	height: 20px;
+}
+/*  Ende Marktplatz marktplatz.php  */
+
+/*  Start admin.php  */
+
+.Themen
+{
+	width: 400px;
+	height:320px;
+	margin-left:auto;
+	margin-right:auto;
+    padding:10;	
+	border: 5px outset grey;
+}
+.Themen p
+{
+	text-align:center;
+}
+
+.Gegner
+{
+	width: 400px;
+	height:620px;
+	margin-left:auto;
+	margin-right:auto;
+    padding:10;	
+	border: 5px outset grey;
+}
+.Gegner p
+{
+	text-align:center;
+}
+
+.Bildrahmen
+{
+	width:80px;
+	height:80px;
+	position: absolute;
+	z-index:1;
+}
+.Bild
+{
+	width:80px;
+	height:80px;
+	z-index:0;
+}
+
+.Waffen
+{
+	width: 400px;
+	height:450px;
+	margin-left:auto;
+	margin-right:auto;
+    padding:10;	
+	border: 5px outset grey;
+}
+.Waffen p
+{
+	text-align:center;
+}
+.Ruestung
+{
+	width: 400px;
+	height:450px;
+	margin-left:auto;
+	margin-right:auto;
+    padding:10;	
+	border: 5px outset grey;
+}
+.Ruestung p
+{
+	text-align:center;
+}
+.Tränke
+{
+	width: 400px;
+	height:500px;
+	margin-left:auto;
+	margin-right:auto;
+    padding:10;	
+	border: 5px outset grey;
+}
+.Tränke p
+{
+	text-align:center;
+}
+/*  Ende admin.php  */
+
+/*  Start themen.php  */
+
+.ThemenContainer
+{
+	width:500px;
+	min-height:400px;
+	margin-left:auto;
+	margin-right:auto;
+	padding:10px;
+	display:flex;	
+	position: relative;
+	align-items:left;
+	justify-content:center;
+	flex-direction:row;
+	border: 5px outset grey;	
+}
+.ItemContainer
+{
+	min-width:100px;
+	width:auto;
+	height:100px;
+	border: 5px outset grey;
+	z-index:1;
+	margin:20px;
+}
+.ItemContainer img
+{
+	width:100px;
+	height:50px;
+	position: absolute;
+	z-index:0;
+}
+.Kampfimg
+{
+  display:inline;
+}
+
+/*  Ende themen.php  */
+
+/*  Start pvp.php */
+
+.Zurückbutton img
+{
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+}
+button
+{
+	width:20%;
+	height: 50px;
+	margin-top: 10px;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	border-radius: 5px;
+}
+
+.RahmenContainer
+{
+	width: 99%;
+	height: 95%;
+	margin-top:10px;
+	border: 5px outset grey;
+	border-radius: 10px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.SpielerRahmenLinks
+{
+	width: 49%;
+	height:99%;
+	border: 1px outset grey;
+	border-radius: 10px;
+	float:left;
+}
+.SpielerBildRahmenLinks
+{
+	width:95%;
+	height:95%;
+	border: 1px outset grey;
+	border-radius: 10px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:1%;
+}
+.SpielerBildLinks
+{
+	width: 100%;
+	height:100%;
+	left: 0px;
+	top: 0px;
+	z-index:1;
+	border-radius: 10px;
+}
+#RuestungRahmenLinks
+{
+	width:30%;
+	height:25%;
+	bottom:26% ;
+	right:-1%;
+	border: 1px outset grey;
+	border-radius: 10px;
+	z-index:0;
+	position: relative;
+}
+.RuestungsBilder
+{
+	width:100%;
+	height:100%;
+	border-radius: 10px;
+}
+.ruestungswert1
+{
+	bottom:80%;
+	font-size: 100%;
+	text-align: center;
+	position: relative;
+}
+#LebenRahmenMitte
+{
+	width:30%;
+	height:25%;
+	bottom:51% ;
+	left:35%;
+	border: 1px outset grey;
+	border-radius: 10px;
+	position: relative;
+}
+.LebensBild
+{
+	width:100%;
+	height:100%;
+	border-radius: 10px;	
+}
+.lebentext1
+{
+	bottom:60% ;
+	position: relative;
+	text-align: center;
+}
+.lebentext1 p
+{
+	font-size: 100%;
+	display: inline;
+}
+#AngriffRahmenLinks
+{
+	width:30%;
+	height:25%;
+	bottom:76% ;
+	right:-69%;
+	border: 1px outset grey;
+	border-radius: 10px;
+	position: relative;
+}
+.AngriffBild
+{
+	width:100%;
+	height:100%;	
+	border-radius: 10px;
+}
+.angriffswert1
+{
+	bottom:80%;
+	font-size: 100%;
+	text-align: center;
+	position: relative;
+}
+.spielername1
+{
+	margin-top:0px;
+	text-align: center;
+	font-size: 30px;
+}
+.SpielerRahmenMitte
+{
+	width: 8%;
+	height:99%;
+	float:left;
+	margin-left:auto;
+	margin-right:auto;
+}
+.SpielerRahmenRechts
+{
+	width: 49%;
+	height:99%;
+	border: 1px outset grey;
+	border-radius: 10px;
+	float:right;
+}
+.SpielerBildRahmenRechts
+{
+	width:95%;
+	height:95%;
+	border: 1px outset grey;
+	border-radius: 10px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:1%;
+}
+.SpielerBildRechts
+{
+	width: 100%;
+	height:100%;
+	transform:scaleX(-1) ;
+	border-radius: 10px;
+}
+#AngriffRahmenRechts
+{
+	width:30%;
+	height:25%;
+	bottom:76% ;
+	right:-1%;
+	border: 1px outset grey;
+	border-radius: 10px;
+	position: relative;
+}
+.angriffswert2
+{
+	bottom:80%;
+	font-size: 100%;
+	text-align: center;
+	position: relative;
+}
+#RuestungRahmenRechts
+{
+	width:30%;
+	height:25%;
+	bottom:26% ;
+	right:-69%;
+	border: 1px outset grey;
+	z-index:0;
+	position: relative;
+	border-radius: 10px;
+}
+.ruestungswert2
+{
+	bottom:80%;
+	font-size: 100%;
+	text-align: center;
+	position: relative;
+}
+.lebentext2
+{
+	bottom:60% ;
+	position: relative;
+	text-align: center;
+}
+.lebentext2 p
+{
+	font-size: 100%;
+	display: inline;
+}
+.spielername2
+{
+	margin-top:0px;
+	text-align: center;
+	font-size: 30px;
+}
+
+/*  Ende pvp.php */
+
+/*  Start pve.php */
+
+/*  Ende pve.php */
+#LebenRahmenRechts
+{
+	width:30%;
+	height:25%;
+	bottom:26% ;
+	left:69%;
+	border: 1px outset grey;
+	border-radius: 10px;
+	position: relative;
+}
+#AngriffRahmenGegnerLinks
+{
+	width:30%;
+	height:25%;
+	bottom:51% ;
+	right:-1%;
+	border: 1px outset grey;
+	border-radius: 10px;
+	position: relative;
+}
+.KampfergebnisseContainer
+{
+	width:300px;
+	height:200px;
+	margin-left: auto;
+	margin-right: auto;
+	display:block;
+	border: 1px outset grey;
+	border-radius: 10px;
+	display: none;
+}
+.KampfergebnisseContainer p
+{
+	text-align: center;
+}
