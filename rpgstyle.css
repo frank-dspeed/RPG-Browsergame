@@ -1,9 +1,23 @@
+@font-face {
+	font-family: "PerryGothic";
+	src: url("./Fonts/PERRYGOT.eot"); /* IE9 Compat Modes */
+	src: url("./Fonts/PERRYGOT.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+	  url("./Fonts/PERRYGOT.otf") format("opentype"), /* Open Type Font */
+	  url("./Fonts/PERRYGOT.svg") format("svg"), /* Legacy iOS */
+	  url("./Fonts/PERRYGOT.ttf") format("truetype"), /* Safari, Android, iOS */
+	  url("./Fonts/PERRYGOT.woff") format("woff"), /* Modern Browsers */
+	  url("./Fonts/PERRYGOT.woff2") format("woff2"); /* Modern Browsers */
+	font-weight: normal;
+	font-style: normal;
+}
+
 body
 {
 	width:100%;
-	background-color : black;
-	color:white;
+	background-color :rgb(207, 170, 121);
+	color:rgb(0, 0, 0);
 	margin:0;
+	font-family: "PerryGothic";
 }
 h1 
 {
@@ -47,15 +61,16 @@ h1
 	position: relative;
 	flex-direction:column;
 	border: 1px outset grey;
+	background-color: burlywood;
 }
 .Avatarbild
 {   
-	width:270px;
+	width:200px;
 	height:auto;
 	margin-top: 1%;
 	margin-left:1%;
-	border: 1px outset grey;
 	position: relative; 
+	background-color: burlywood;
 }
 .LvL
 {
@@ -72,7 +87,6 @@ h1
 }
 .LvL p
 {   
-    color:white;
 	font-weight: bold; 
 }
 .Spielerbildrahmen
@@ -88,52 +102,148 @@ h1
 	height:80px;
 	z-index:0;
 }
-.LvLPlakette
+#LvLPlakette
+{
+	position: absolute;
+	bottom:-20px;
+	left:20px;
+}
+.Plakette
 {
 	width:40px;
 	height:40px;
-	position: absolute;
 	z-index:2;
-	bottom:-20px;
-	left:20px;
 }
 .Bildupload
 {
 	top:0;
-	left:80px;
+	left:90px;
 	position: absolute;
+}
+
+input[type="file"] {
+    display: none;
+}
+.Bildupload label
+{
+	color:rgb(0, 0, 0);
+	margin:3px;
 }
 .Angepasster-Input
 {
-
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 1px 2px;
+	cursor: pointer;
+	background-color: rgb(126, 126, 126);
+	color:rgb(0, 0, 0);
+	border: 3px outset grey;
+	border-radius: 3px;
+	margin:3px;
 }
 .Avatarbutton
 {
 	width: 20px;
 	height: 20px;
+	margin:3px;
 }
 .Ausruestung
 {
-	width: 200px;
+	width: 300px;
 	height: 80px;
 	top:0%;
 	right:0%;
 	margin-right: 1%;
 	margin-top: 1%;
-	border: 1px outset grey;
+	position: absolute;
+}
+.RuestungContainer
+{
+	top:3%;
+	left:5%;
+	position: absolute;
+}
+.ruestungswert
+{
+width:40px;
+height:40px;
+display: flex;
+bottom:28px;
+left:58px;
+position: absolute;
+z-index:3;
+justify-content: center;
+vertical-align: auto;
+align-items: center;
+}
+
+.WaffenCont
+{
+	top:3%;
+	right:10%;
+	position: absolute;
+}
+.waffenwert
+{
+	width:40px;
+	height:40px;
+	display: flex;
+	bottom:28px;
+	left:58px;
+	position: absolute;
+	z-index:3;
+	justify-content: center;
+	vertical-align: auto;
+	align-items: center;
+}
+.Stats
+{
+  width: 100%;
+  height:auto;
+  margin-top: 20px;
+}
+.Stats p
+{
+	display: inline;
+	margin-left: 20px;
+}
+.Stats img
+{
+	width:20px;
+	height:20px;
+}
+#geldcontainer
+{
+	right:10;
+	bottom: 0;
 	position: absolute;
 }
 
-
-
-.Spieler
+#leben
 {
-	top:1px;
+	left:155px;
+	bottom: 8px;
+	position: absolute;
 }
+#erfahrung
+{
+	left:150px;
+	bottom: -18px;
+	position: absolute;
+}
+
 .form
 {
+	width: 20px;
+	height:20px;
+	top: 5px;
+	right:5px;
 	position: absolute;
-	bottom: 1px;
+}
+.form input
+{
+	width: 20px;
+	height: 20px;
 }
 
 .SpielerlisteContainer
@@ -148,7 +258,9 @@ h1
 	justify-content:center;
 	flex-direction:column;
 	border: 5px outset grey;
+	overflow-y: auto ;
 }
+
 .SpielerlisteContainer img
 {
 	width: 20px;
@@ -380,17 +492,6 @@ h1
 	margin-right:auto;
 	display:block;
 }
-button
-{
-	width:20%;
-	height: 50px;
-	margin-top: 10px;
-	margin-left:auto;
-	margin-right:auto;
-	display:block;
-	border-radius: 5px;
-}
-
 .RahmenContainer
 {
 	width: 99%;
