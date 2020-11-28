@@ -14,7 +14,7 @@
 body
 {
 	width:100%;
-	background-color :rgb(207, 170, 121);
+	background-color :rgb(177, 141, 95);
 	color:rgb(0, 0, 0);
 	margin:0;
 	font-family: "PerryGothic";
@@ -42,19 +42,43 @@ h1
 /*  Ende index.php  */
 
 /*  Start rpg.php  */
+
+.Content
+{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+}
 .Navigation
 {
+	min-width: 500px;
 	max-width: 500px;
-	min-width: 300px;
 	height: 96%;
-	margin-left:0;
-	margin-top: 1%;
-	border: 1px outset grey;
+	margin-left:1%;
+	margin-top: 10px;
+	flex:1;
+}
+.SzenenContainer
+{
+	width: calc(100% - 560px);
+	height: 95%;
+	border: 1px outset rgb(0, 0, 0);
+	margin-top: 10px;
+	margin-left:10px;
+	margin-right:10px;
+	flex:1;
+}
+.Szenenbild
+{
+    width: 100%;
+	height: 100%;
+	object-fit: fill;
 }
 .SpielerInfoContainer
 {
 	width: 100%;
-	min-height: 20%;
+	height:auto;
 	margin-left:0;
 	margin-right:auto;
 	display:flex;	
@@ -121,7 +145,8 @@ h1
 	position: absolute;
 }
 
-input[type="file"] {
+#bild-hochladen
+{
     display: none;
 }
 .Bildupload label
@@ -211,6 +236,7 @@ align-items: center;
 {
 	width:20px;
 	height:20px;
+	margin-left:10px;
 }
 #geldcontainer
 {
@@ -248,78 +274,151 @@ align-items: center;
 
 .SpielerlisteContainer
 {
-	width: 280px;
-	height:500px;
-	margin-left:auto;
+	width: 100%;
+	height: 30%;
+	margin-left:0;
 	margin-right:auto;
 	display:flex;	
 	position: relative;
-	align-items:center;
-	justify-content:center;
 	flex-direction:column;
-	border: 5px outset grey;
-	overflow-y: auto ;
+	border: 1px outset grey;
+	background-color: burlywood;
 }
-
+.SpielerlisteContainer p
+{
+	margin-left: 10px;
+}
+.SpielerlisteContainer a
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+}
 .SpielerlisteContainer img
 {
 	width: 20px;
 	height: 20px;
+	margin-left: 10px;
+}
+.Spielerliste
+{
+	overflow-y: scroll;
 }
 
 .MarktplatzContainer
 {
-	width: 280px;
-	height:500px;
+	width: 100%;
+	height: 15%;
 	margin-left:auto;
 	margin-right:auto;
 	display:flex;	
 	position: relative;
 	align-items:center;
-	justify-content:center;
-	flex-direction:column;
-	border: 5px outset grey;
+	border: 1px outset grey;
+	background-color: burlywood;
 }
-.KampfContainer
+.Aktionsbilder 
 {
-	width: 280px;
-	height:500px;
+	width:45%;
+	height: 90%;
+	right:0px;
+	position: absolute;
+	border: 1px outset grey;
+	margin-right: 2%;
+}
+.Aktionsbilder img
+{
+    width: 100%;
+	height: 100%;
+	object-fit: fill;
+}
+.Beschriftung
+{
+margin-left:10%;
+font-size: 24;
+}
+.PVPKampfContainer
+{
+	width: 100%;
+	height: 15%;
 	margin-left:auto;
 	margin-right:auto;
 	display:flex;	
 	position: relative;
 	align-items:center;
-	justify-content:center;
-	flex-direction:column;
-	border: 5px outset grey;
+	border: 1px outset grey;
+	background-color: burlywood;
+}
+.PVEKampfContainer
+{
+	width: 100%;
+	height: 18%;
+	margin-left:auto;
+	margin-right:auto;
+	display:flex;	
+	position: relative;
+	align-items:center;
+	flex-direction:row;
+	border: 1px outset grey;
+	background-color: burlywood;
 }
 /*  Ende rpg.php  */
 
 /*  Start Marktplatz marktplatz.php  */
-
+.NavigationMarktplatz
+{
+	min-width: 500px;
+	max-width: 500px;
+	height: 200px;
+	margin-left:auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 .Überschrift 
 {
-	width:100px;
+	width:200px;
+	height:auto;
 	margin-left:auto;
 	margin-right:auto;
+	font-size: 24px;
+	text-align: center;
 }
 .WaffenContainer
 {
-	width: 280px;
-	height:500px;
+	width: 60%;
+	height: auto;
+	margin-top:10px;
 	margin-left:auto;
 	margin-right:auto;
 	display:flex;	
-	position: relative;
 	align-items:center;
 	justify-content:center;
 	flex-direction:column;
 	border: 5px outset grey;
 }
-.WaffenContainer img
+.Waffenliste
+{   
+	width: 100%;
+	height: 50%;
+	border: 5px outset grey;
+	font-size: 24px;
+	margin-bottom: 0;
+
+}
+.Waffenliste p
 {
-	width: 20px;
-	height: 20px;
+	margin-left: 10px;
+}
+.Waffenliste form
+{   
+  width: 100%;
+  display: inline;
+}
+.Waffenliste input
+{
+	position: relative;
+	right:0px;
 }
 .RuestungsContainer
 {
@@ -364,7 +463,7 @@ align-items: center;
 .Themen
 {
 	width: 400px;
-	height:320px;
+	height:auto;
 	margin-left:auto;
 	margin-right:auto;
     padding:10;	
@@ -378,7 +477,7 @@ align-items: center;
 .Gegner
 {
 	width: 400px;
-	height:620px;
+	height:auto;
 	margin-left:auto;
 	margin-right:auto;
     padding:10;	
@@ -406,7 +505,7 @@ align-items: center;
 .Waffen
 {
 	width: 400px;
-	height:450px;
+	height:auto;
 	margin-left:auto;
 	margin-right:auto;
     padding:10;	
@@ -419,7 +518,7 @@ align-items: center;
 .Ruestung
 {
 	width: 400px;
-	height:450px;
+	height:auto;
 	margin-left:auto;
 	margin-right:auto;
     padding:10;	
@@ -432,7 +531,7 @@ align-items: center;
 .Tränke
 {
 	width: 400px;
-	height:500px;
+	height:auto;
 	margin-left:auto;
 	margin-right:auto;
     padding:10;	
@@ -487,7 +586,8 @@ align-items: center;
 
 .Zurückbutton img
 {
-	width:50%;
+	width:50px;
+	height: 50px;
 	margin-left:auto;
 	margin-right:auto;
 	display:block;
