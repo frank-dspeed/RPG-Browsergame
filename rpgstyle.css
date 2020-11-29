@@ -386,7 +386,7 @@ font-size: 24;
 }
 .WaffenContainer
 {
-	width: 60%;
+	width: 90%;
 	height: auto;
 	margin-top:10px;
 	margin-left:auto;
@@ -396,29 +396,47 @@ font-size: 24;
 	justify-content:center;
 	flex-direction:column;
 	border: 5px outset grey;
+	background-color: rgb(255, 217, 167);
 }
 .Waffenliste
 {   
 	width: 100%;
 	height: 50%;
 	border: 5px outset grey;
-	font-size: 24px;
+	border-bottom: none;
+	font-size: 20px;
 	margin-bottom: 0;
+	display: flex;
+	flex-direction: column;	
+	background-color:burlywood;
+}
+.GegenstandEinzeln
+{
+	width:100%;
+	margin-right:auto;
+	margin-left:auto;
+	margin-bottom: 5px;
+	display: flex;
+	flex-direction: row;
+	padding-left:10px;	
+}
 
-}
-.Waffenliste p
+.GegenstandEinzeln img
 {
-	margin-left: 10px;
+	margin-top:10px;
+	margin-left:10px;
+	display: inline;
 }
-.Waffenliste form
-{   
-  width: 100%;
-  display: inline;
-}
-.Waffenliste input
+.GegenstandEinzeln p
 {
-	position: relative;
-	right:0px;
+	width:220px;	
+	margin-left:20px;
+}
+.GegenstandEinzeln input
+{
+	margin-top:30px;
+	position: absolute;
+	right:10%;
 }
 .RuestungsContainer
 {

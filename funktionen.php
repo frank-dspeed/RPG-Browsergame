@@ -498,22 +498,7 @@ class DBAktionen
 
 
 
-	//WaffenContainer  ---------------------------------------------------------------------------------------------
-	function AlleWaffenLesen($connection)
-	{
-		$select = $connection->prepare("SELECT waffenbildpfad, waffenid, waffenname, waffenwert, geldwert FROM waffen");
-		$select->execute();
-		$result = $select->get_result();
-		while ($row = $result->fetch_array()) {
-			echo ("<img src=" . ($row['waffenbildpfad']) . "" . " width=\"100\" height=\"100\"> &nbsp
-			" . $row['waffenname'] . "&nbsp Angriff: &nbsp" . $row['waffenwert'] . "
-			 &nbsp Kostet: &nbsp " . $row['geldwert'] . " &nbsp<img src=\"Bilder/Geld.png\" width=\"20\" height=\"20\"
-			 <form action=\"marktplatz.php\" method=\"POST\">
-			 <input type=\"hidden\" name=\"waffenid\" value=\"" . $row['waffenid'] . "\" />
-			 <input type=\"image\" src=\"/Bilder/Geldsack.png\" width=\"50\" height=\"50\">
-			 </form><br><br>");
-		}
-	}
+
 	//Waffen und Rüstung Kaufen  ---------------------------------------------------------------------------------------------
 	function Kaufen($connection, $tabelle, $typid, $id)
 	{
@@ -560,21 +545,45 @@ class DBAktionen
 			$update->execute();
 		}
 	}
-
-	//RüstungsContainer  ---------------------------------------------------------------------------------------------
-	function AlleRüstungenLesen($connection)
+	//WaffenContainer  ---------------------------------------------------------------------------------------------
+	function AlleWaffenLesen($connection)
 	{
-		$select = $connection->prepare("SELECT ruestungsbildpfad, ruestungsid, ruestungsname, ruestungswert, geldwert FROM ruestung");
+		$select = $connection->prepare("SELECT waffenbildpfad, waffenid, waffenname, waffenwert, geldwert FROM waffen WHERE waffenid !=0");
 		$select->execute();
 		$result = $select->get_result();
 		while ($row = $result->fetch_array()) {
-			echo ("<img src=" . ($row['ruestungsbildpfad']) . "> &nbsp
-			" . $row['ruestungsname'] . "&nbsp Verteidigung: &nbsp" . $row['ruestungswert'] . "
-			 &nbsp Kostet: &nbsp " . $row['geldwert'] . "&nbsp
+			echo ("
+			<div class=\"GegenstandEinzeln\">
+			<img src=" . ($row['waffenbildpfad']) . "" . " width=\"100\" height=\"100\"> &nbsp
+			<p>
+			" . $row['waffenname'] . "</p>&nbsp <p>Angriff: &nbsp" . $row['waffenwert'] . "</p>
+			 &nbsp <p>Kostet: &nbsp " . $row['geldwert'] . "</p> &nbsp<img src=\"Bilder/Geld.png\" width=\"30\" height=\"30\">
+             </p>
+			 <form action=\"marktplatz.php\" method=\"POST\">
+			 <input type=\"hidden\" name=\"waffenid\" value=\"" . $row['waffenid'] . "\" />
+			 <input type=\"image\" src=\"/Bilder/Geldsack.png\" width=\"60\" height=\"60\">
+			 </form>
+			 </div><br><br>");
+		}
+	}
+	//RüstungsContainer  ---------------------------------------------------------------------------------------------
+	function AlleRüstungenLesen($connection)
+	{
+		$select = $connection->prepare("SELECT ruestungsbildpfad, ruestungsid, ruestungsname, ruestungswert, geldwert FROM ruestung WHERE ruestungsid !=0");
+		$select->execute();
+		$result = $select->get_result();
+		while ($row = $result->fetch_array()) {
+			echo ("
+			<div class=\"GegenstandEinzeln\">
+			<img src=" . ($row['ruestungsbildpfad']) . "" . " width=\"100\" height=\"100\"> &nbsp
+			<p>
+			 " . $row['ruestungsname'] . "</p>&nbsp <p>Verteidigung: &nbsp" . $row['ruestungswert'] . "</p>
+			 &nbsp <p>Kostet: &nbsp " . $row['geldwert'] . "</p>&nbsp<img src=\"Bilder/Geld.png\" width=\"30\" height=\"30\">
 			 <form action=\"marktplatz.php\" method=\"POST\">
 			 <input type=\"hidden\" name=\"ruestungsid\" value=\"" . $row['ruestungsid'] . "\" />
-			 <input type=\"image\" src=\"/Bilder/Geldsack.png\" width=\"20\" height=\"20\">
-			 </form><br>");
+			 <input type=\"image\" src=\"/Bilder/Geldsack.png\" width=\"60\" height=\"60\">
+			 </form>
+			 </div><br><br>");
 		}
 	}
 
@@ -585,14 +594,18 @@ class DBAktionen
 		$select->execute();
 		$result = $select->get_result();
 		while ($row = $result->fetch_array()) {
-			echo ("<img src=" . ($row['trankbildpfad']) . "> &nbsp
-			" . $row['trankname'] . "&nbsp Heilung: &nbsp" . $row['trankwert'] . "
-			 &nbsp Permanent: &nbsp" . $row['trankwertpermanent'] . "
-			 &nbsp Kostet: &nbsp " . $row['geldwert'] . "&nbsp
+			echo ("
+			<div class=\"GegenstandEinzeln\">
+			<img src=" . ($row['trankbildpfad']) . "" . " width=\"100\" height=\"100\">&nbsp
+			<p>
+			" . $row['trankname'] . "</p>&nbsp <p>Heilung: &nbsp" . $row['trankwert'] . "</p>
+			 &nbsp <p>Permanent: &nbsp" . $row['trankwertpermanent'] . "</p>
+			 &nbsp <p>Kostet: &nbsp " . $row['geldwert'] . "&nbsp</p><img src=\"Bilder/Geld.png\" width=\"30\" height=\"30\">
 			 <form action=\"marktplatz.php\" method=\"POST\">
 			 <input type=\"hidden\" name=\"trankid\" value=\"" . $row['trankid'] . "\" />
-			 <input type=\"image\" src=\"/Bilder/Geldsack.png\" width=\"20\" height=\"20\">
-			 </form><br>");
+			 <input type=\"image\" src=\"/Bilder/Geldsack.png\" width=\"60\" height=\"60\">
+			 </form>
+			 </div><br><br>");
 		}
 	}
 

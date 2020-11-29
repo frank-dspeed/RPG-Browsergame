@@ -82,26 +82,25 @@ if (!isset($_SESSION["Spieler"])) {
         </div>
     </div>
 </div>
-
 <div class="WaffenContainer">
-    <p class="Überschrift">Waffenschmied</p>
+    <p class="Überschrift">Heilstube</p>
     <div class="Waffenliste">
-        <p><?php $newClass->AlleWaffenLesen($connection) ?></p>
-    </div>
-</div>
-
-<div class="RuestungsContainer">
-    <p>Rüstungsschmied</p>
-    <div class="Ruestungsliste">
-        <p><?php $newClass->AlleRüstungenLesen($connection) ?></p>
-    </div>
-</div>
-
-<div class="HeilstubeContainer">
-    <p>Heilstube</p>
-    <div class="Heiltrankliste">
         <p><?php $newClass->AlleTraenkeLesen($connection) ?></p>
     </div>
 </div>
+<div class="WaffenContainer">
+    <p class="Überschrift">Waffenschmied</p>
+    <div class="Waffenliste">
+        <?php $newClass->AlleWaffenLesen($connection) ?>
+    </div>
+</div>
+
+<div class="WaffenContainer">
+    <p class="Überschrift">Rüstungsschmied</p>
+    <div class="Waffenliste">
+        <p><?php $newClass->AlleRüstungenLesen($connection) ?></p>
+    </div>
+</div>
+<br>
 
 </html>
