@@ -482,17 +482,24 @@ class DBAktionen
 	//SpielerKampf PVP ---------------------------------------------------------------------------------------------
 	function AlleSpielerKampf($connection)
 	{
+		$lvl = $this->SpielerLesen($connection, "lvl", $_SESSION["Spieler"]);
+		$eigenerSpieler = $_SESSION["Spieler"];
 		$sperre = 0;
-		$select = $connection->prepare("SELECT spielerbildpfad, spielername, lvl FROM spieler WHERE gesperrt = ? ORDER BY lvl");
-		$select->bind_param("i", $sperre);
+		$leben = 0;
+		$select = $connection->prepare("SELECT spielerbildpfad, spielername, lvl FROM spieler WHERE gesperrt = ? AND lvl >=? AND spielername !=? AND leben >? ORDER BY lvl");
+		$select->bind_param("iisi", $sperre, $lvl, $eigenerSpieler, $leben);
 		$select->execute();
 		$result = $select->get_result();
 		while ($row = $result->fetch_array()) {
-			echo ("<form action=\"/pvp.php\" method=\"POST\">
-				<p>" . $row['spielername'] . "<br>Level : " . $row["lvl"] . "
+			echo ("
+			    <div class=\"GegenstandEinzeln\">
+			    <img src=" . ($row['spielerbildpfad']) . "" . " width=\"100\" height=\"100\">			
+				<p>" . $row['spielername'] . "</p><p>Level : " . $row["lvl"] . "</p>
+				<form action=\"/pvp.php\" method=\"POST\">
 				<input type=\"hidden\" name=\"spielergegner\" value=\"" . $row['spielername'] . "\" />
-				<input class=\"Kampfimg\" type=\"image\"src=\"/Bilder/Kampf.png\" width=\"20\" height=\"20\">
-				</form></p>");
+				<input class=\"Kampfimg\" type=\"image\"src=\"/Bilder/Kampf.png\" width=\"80\" height=\"80\">
+				</form>
+				</div>");
 		}
 	}
 
@@ -557,8 +564,7 @@ class DBAktionen
 			<img src=" . ($row['waffenbildpfad']) . "" . " width=\"100\" height=\"100\"> &nbsp
 			<p>
 			" . $row['waffenname'] . "</p>&nbsp <p>Angriff: &nbsp" . $row['waffenwert'] . "</p>
-			 &nbsp <p>Kostet: &nbsp " . $row['geldwert'] . "</p> &nbsp<img src=\"Bilder/Geld.png\" width=\"30\" height=\"30\">
-             </p>
+			 &nbsp <p>Kostet: &nbsp " . $row['geldwert'] . "<img src=\"Bilder/Geld.png\" width=\"30\" height=\"30\"></p>
 			 <form action=\"marktplatz.php\" method=\"POST\">
 			 <input type=\"hidden\" name=\"waffenid\" value=\"" . $row['waffenid'] . "\" />
 			 <input type=\"image\" src=\"/Bilder/Geldsack.png\" width=\"60\" height=\"60\">
@@ -578,7 +584,7 @@ class DBAktionen
 			<img src=" . ($row['ruestungsbildpfad']) . "" . " width=\"100\" height=\"100\"> &nbsp
 			<p>
 			 " . $row['ruestungsname'] . "</p>&nbsp <p>Verteidigung: &nbsp" . $row['ruestungswert'] . "</p>
-			 &nbsp <p>Kostet: &nbsp " . $row['geldwert'] . "</p>&nbsp<img src=\"Bilder/Geld.png\" width=\"30\" height=\"30\">
+			 &nbsp <p>Kostet: &nbsp " . $row['geldwert'] . "<img src=\"Bilder/Geld.png\" width=\"30\" height=\"30\"></p>
 			 <form action=\"marktplatz.php\" method=\"POST\">
 			 <input type=\"hidden\" name=\"ruestungsid\" value=\"" . $row['ruestungsid'] . "\" />
 			 <input type=\"image\" src=\"/Bilder/Geldsack.png\" width=\"60\" height=\"60\">
@@ -594,13 +600,22 @@ class DBAktionen
 		$select->execute();
 		$result = $select->get_result();
 		while ($row = $result->fetch_array()) {
+			if ($row['trankwert'] > 0) {
+				$typ = "Heilung";
+				$value = $row['trankwert'];
+			}
+			if ($row['trankwertpermanent'] > 0) {
+				$typ = "Permanent";
+				$value = $row['trankwertpermanent'];
+			}
+
 			echo ("
 			<div class=\"GegenstandEinzeln\">
 			<img src=" . ($row['trankbildpfad']) . "" . " width=\"100\" height=\"100\">&nbsp
 			<p>
-			" . $row['trankname'] . "</p>&nbsp <p>Heilung: &nbsp" . $row['trankwert'] . "</p>
-			 &nbsp <p>Permanent: &nbsp" . $row['trankwertpermanent'] . "</p>
-			 &nbsp <p>Kostet: &nbsp " . $row['geldwert'] . "&nbsp</p><img src=\"Bilder/Geld.png\" width=\"30\" height=\"30\">
+			" . $row['trankname'] . "</p>
+			 <p>" . $typ . " &nbsp" . $value . "</p>
+			 <p>Kostet: &nbsp " . $row['geldwert'] . "<img src=\"Bilder/Geld.png\" width=\"30\" height=\"30\"></p>
 			 <form action=\"marktplatz.php\" method=\"POST\">
 			 <input type=\"hidden\" name=\"trankid\" value=\"" . $row['trankid'] . "\" />
 			 <input type=\"image\" src=\"/Bilder/Geldsack.png\" width=\"60\" height=\"60\">
@@ -625,31 +640,50 @@ class DBAktionen
 	// Themen anzeigen bei denen Gegner zugewiesen sind
 	function ThemenAnzeigen($connection)
 	{
-		// SQL muss hier noch angepasst werden
 		$select = $connection->prepare("SELECT DISTINCT themenname, themenbildpfad from themen INNER JOIN gegner ON  gegner.thema = themen.themenname");
 		$select->execute();
-		$sperre = 0;
 		$result = $select->get_result();
 		while ($row = $result->fetch_array()) {
-			$counter = 0;
-			echo '<div class="ItemContainer"><p>' . $row["themenname"] . '</p>
-			 <img src=' . $row["themenbildpfad"] . '><br><br><br>';
-
-			$select2 = $connection->prepare("SELECT gegnername,gegnerid, lvl FROM gegner WHERE thema=? AND gesperrt=?");
-			$select2->bind_param("si", $row["themenname"], $sperre);
-			$select2->execute();
-			$result2 = $select2->get_result();
-			while ($row2 = $result2->fetch_array()) {
-				$counter++;
-				echo
-					"<form action=\"/pve.php\" method=\"POST\">
-					   <p>" . $row2["gegnername"] . "<br>Level : " . $row2["lvl"] . "
-				       <input type=\"hidden\" name=\"gegnerid\" value=\"" . $row2['gegnerid'] . "\" />
-					   <input class=\"Kampfimg\" type=\"image\"src=\"/Bilder/Kampf.png\" width=\"20\" height=\"20\">
-					   </form></p>";
-			}
-			echo "<br><br>Anzahl Gegner : " . $counter . "";
-			echo "</div><br>";
+			echo ('
+			<div class=GegenstandEinzeln>
+			<img src=' . $row["themenbildpfad"] . ' width=100 height=100>
+			<p>' . $row["themenname"] . '</p>
+			<p>Anzahl Gegner</p>
+			<p>' . $this->ThemenGegnerAnzahl($connection, $row["themenname"]) . '</p>
+			<form action="themengegner.php" method="POST">
+			<input type=hidden name="themenname" value="' . $row["themenname"] . '" />
+			<input type=image src="/Bilder/Schild.png" width=80 height=80>
+			</form>
+		    </div>');
+		}
+	}
+	function ThemenGegnerAnzahl($connection, $themenname)
+	{
+		$sperre = 0;
+		$select = $connection->prepare("SELECT COUNT(gegnername)AS anzahl FROM gegner WHERE thema=? AND gesperrt=?");
+		$select->bind_param("si", $themenname, $sperre);
+		$select->execute();
+		$result = $select->get_result();
+		$row = $result->fetch_assoc();
+		return $row["anzahl"];
+	}
+	function ThemenGegnerAnzeigen($connection, $themenname)
+	{
+		$sperre = 0;
+		$select2 = $connection->prepare("SELECT gegnername,gegnerid, lvl FROM gegner WHERE thema=? AND gesperrt=?");
+		$select2->bind_param("si", $themenname, $sperre);
+		$select2->execute();
+		$result2 = $select2->get_result();
+		while ($row2 = $result2->fetch_array()) {
+			echo
+				"
+				<div class=GegenstandEinzeln>
+				<p>" . $row2["gegnername"] . "</p><p>Level : " . $row2["lvl"] . "</p>
+				<form action=\"/pve.php\" method=\"POST\">
+				   <input type=\"hidden\" name=\"gegnerid\" value=\"" . $row2['gegnerid'] . "\" />
+				   <input class=\"Kampfimg\" type=\"image\"src=\"/Bilder/Kampf.png\" width=\"60\" height=\"60\">
+				   </form></p>
+				   </div>";
 		}
 	}
 }

@@ -323,7 +323,6 @@ align-items: center;
 	height: 90%;
 	right:0px;
 	position: absolute;
-	border: 1px outset grey;
 	margin-right: 2%;
 }
 .Aktionsbilder img
@@ -389,6 +388,7 @@ font-size: 24;
 	width: 90%;
 	height: auto;
 	margin-top:10px;
+	margin-bottom: 50px;
 	margin-left:auto;
 	margin-right:auto;
 	display:flex;	
@@ -563,40 +563,6 @@ font-size: 24;
 
 /*  Start themen.php  */
 
-.ThemenContainer
-{
-	width:500px;
-	min-height:400px;
-	margin-left:auto;
-	margin-right:auto;
-	padding:10px;
-	display:flex;	
-	position: relative;
-	align-items:left;
-	justify-content:center;
-	flex-direction:row;
-	border: 5px outset grey;	
-}
-.ItemContainer
-{
-	min-width:100px;
-	width:auto;
-	height:100px;
-	border: 5px outset grey;
-	z-index:1;
-	margin:20px;
-}
-.ItemContainer img
-{
-	width:100px;
-	height:50px;
-	position: absolute;
-	z-index:0;
-}
-.Kampfimg
-{
-  display:inline;
-}
 
 /*  Ende themen.php  */
 
@@ -604,8 +570,8 @@ font-size: 24;
 
 .Zurückbutton img
 {
-	width:50px;
-	height: 50px;
+	width:80px;
+	height: 80px;
 	margin-left:auto;
 	margin-right:auto;
 	display:block;
