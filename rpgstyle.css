@@ -14,6 +14,7 @@
 body
 {
 	width:100%;
+	height:100%;
 	background-color :rgb(177, 141, 95);
 	color:rgb(0, 0, 0);
 	margin:0;
@@ -376,7 +377,7 @@ font-size: 24;
 }
 .Überschrift 
 {
-	width:200px;
+	width:300px;
 	height:auto;
 	margin-left:auto;
 	margin-right:auto;
@@ -568,31 +569,53 @@ font-size: 24;
 
 /*  Start pvp.php */
 
+.Zurückbutton
+{
+	height: auto;
+	margin-left:auto;
+	margin-right:auto;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	margin-top: 100px;
+}
+#kampfstartenbutton img
+{
+   width: 60px;
+   height: 60px;
+}
+
 .Zurückbutton img
 {
 	width:80px;
 	height: 80px;
-	margin-left:auto;
-	margin-right:auto;
-	display:block;
+}
+
+.Zurückbutton button
+{
+	width:80px;
+	height: 80px;
+	border-radius: 20px;
+	margin-top:20px;
+}
+.Zurückbutton button:hover
+{
+	cursor: pointer;
 }
 .RahmenContainer
 {
-	width: 99%;
-	height: 95%;
+	width: 80%;
+	height: 60%;
 	margin-top:10px;
-	border: 5px outset grey;
-	border-radius: 10px;
 	margin-left:auto;
 	margin-right:auto;
 }
 .SpielerRahmenLinks
 {
-	width: 49%;
-	height:99%;
-	border: 1px outset grey;
-	border-radius: 10px;
-	float:left;
+	width: 40%;
+	height:60%;
+	position: absolute;
+	left:5%;
 }
 .SpielerBildRahmenLinks
 {
@@ -630,12 +653,25 @@ font-size: 24;
 	height:100%;
 	border-radius: 10px;
 }
+#PVERPC
+{
+	width:40px;
+	height:40px;
+	display: flex;
+	top:-20px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	z-index:3;
+	justify-content: center;
+	vertical-align: auto;
+	align-items: center;
+}
 .ruestungswert1
 {
-	bottom:80%;
-	font-size: 100%;
 	text-align: center;
-	position: relative;
+	position: absolute;
+	z-index:3;
 }
 #LebenRahmenMitte
 {
@@ -680,34 +716,46 @@ font-size: 24;
 	height:100%;	
 	border-radius: 10px;
 }
+#PVEAPC
+{
+	width:40px;
+	height:40px;
+	display: flex;
+	top:-20px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	z-index:3;
+	justify-content: center;
+	vertical-align: auto;
+	align-items: center;
+}
 .angriffswert1
 {
-	bottom:80%;
-	font-size: 100%;
 	text-align: center;
-	position: relative;
+	position: absolute;
+	z-index:3;
 }
 .spielername1
 {
-	margin-top:0px;
+	margin-top:10px;
 	text-align: center;
-	font-size: 30px;
+	font-size: 24px;
 }
 .SpielerRahmenMitte
 {
 	width: 8%;
-	height:99%;
+	height:auto;
 	float:left;
 	margin-left:auto;
 	margin-right:auto;
 }
 .SpielerRahmenRechts
 {
-	width: 49%;
-	height:99%;
-	border: 1px outset grey;
-	border-radius: 10px;
-	float:right;
+	width: 40%;
+	height: 60%;
+	position: absolute;
+	right:5%;
 }
 .SpielerBildRahmenRechts
 {
@@ -736,12 +784,17 @@ font-size: 24;
 	border-radius: 10px;
 	position: relative;
 }
-.angriffswert2
+#gegnerschaden
 {
-	bottom:80%;
-	font-size: 100%;
+text-align: center;
+position: absolute;
+z-index:3;	
+}
+#gegnerleben
+{
 	text-align: center;
-	position: relative;
+	position: absolute;
+	z-index:3;
 }
 #RuestungRahmenRechts
 {
@@ -754,12 +807,37 @@ font-size: 24;
 	position: relative;
 	border-radius: 10px;
 }
-.ruestungswert2
+#PVEGLPC
 {
-	bottom:80%;
-	font-size: 100%;
-	text-align: center;
+	width:40px;
+	height:40px;
+	display: flex;
+	top:-20px;
+	margin-left: auto;
+	margin-right: auto;
 	position: relative;
+	z-index:3;
+	justify-content: center;
+	vertical-align: auto;
+	align-items: center;	
+}
+#gegnerleben
+{
+	text-align: center;
+	position: absolute;
+	z-index:3;	
+}
+#spieler2ruestungswert
+{
+	text-align: center;
+	position: absolute;
+	z-index:3;	
+}
+#spieler2angriff
+{
+	text-align: center;
+	position: absolute;
+	z-index:3;	
 }
 .lebentext2
 {
@@ -774,9 +852,9 @@ font-size: 24;
 }
 .spielername2
 {
-	margin-top:0px;
+	margin-top:10px;
 	text-align: center;
-	font-size: 30px;
+	font-size: 24px;
 }
 
 /*  Ende pvp.php */
@@ -806,14 +884,20 @@ font-size: 24;
 }
 .KampfergebnisseContainer
 {
-	width:300px;
-	height:200px;
-	margin-left: auto;
-	margin-right: auto;
-	display:block;
-	border: 1px outset grey;
+	width:80%;
+	height:80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	bottom:10%;
+	border: 5px solid grey;
 	border-radius: 10px;
-	display: none;
+	display: block;
+	background-color: burlywood;
+	position: absolute;
+	z-index: 5;
+	opacity:0;
+	transform: translate(+0%, +0%) scale(0);
+	transition: opacity 2s, transform 2s;
 }
 .KampfergebnisseContainer p
 {

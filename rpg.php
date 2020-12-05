@@ -5,7 +5,7 @@ include("funktionen.php");
 <html>
 
 <head>
-    <title>RPG</title>
+    <title>Propania</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="rpgstyle.css" />
 </head>

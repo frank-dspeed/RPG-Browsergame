@@ -670,7 +670,7 @@ class DBAktionen
 	function ThemenGegnerAnzeigen($connection, $themenname)
 	{
 		$sperre = 0;
-		$select2 = $connection->prepare("SELECT gegnername,gegnerid, lvl FROM gegner WHERE thema=? AND gesperrt=?");
+		$select2 = $connection->prepare("SELECT gegnername,gegnerid, lvl FROM gegner WHERE thema=? AND leben >0 AND gesperrt=?");
 		$select2->bind_param("si", $themenname, $sperre);
 		$select2->execute();
 		$result2 = $select2->get_result();
