@@ -5,24 +5,23 @@
   <title>Propania</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="rpgstyle.css">
+  <script type="module">
+  import login from '/components/login.js'
+  <?php
+  include("funktionen.php");
+  if (!isset($_SESSION["Spieler"])) {
+      //header('location: index.php');
+      //even better would be to select game-component
+      document.body.innerHTML = login;
+  }
+  ?>
+  </script>
 </head>
 
 
 <body>
   <h1>Propania</h1>
-
-  <div class="LoginContainer">
-    <form action="/rpg.php" method="POST">
-      <label>Benutzername :</label><br>
-      <input type="text" id="bname" name="bname"><br>
-      <label>Passwort :</label><br>
-      <input type="password" id="pname" name="pw"><br><br>
-      <input type="submit" name="action" value="Einloggen"><input type="submit" name="action" value="Registrieren"><input type="reset" value="Zurücksetzen">
-  </div>
-
-  </form>
-
-
+  <game-component></game-component>
 </body>
 
 </html>

@@ -65,7 +65,7 @@ include("funktionen.php");
                     <img src="Bilder/Geld.png">
                 </div>
                 <div class="form">
-                    <form action="/rpglogin.php" method="POST">
+                    <form action="/index.php" method="POST">
                         <input type="image" src="/Bilder/Ausloggen.png" name="action" value="Ausloggen" />
                     </form>
                 </div>

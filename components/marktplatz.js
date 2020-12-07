@@ -1,16 +1,10 @@
-<?php
-include("funktionen.php");
-?>
-
-<html>
-
-<head>
-    <title>Spielergegner</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="rpgstyle.css" />
-</head>
-<div class="Zurückbutton">
+//    <title>Marktplatz</title>
+export default `<div class="Zurückbutton">
     <a href="/rpg.php"><img src="Bilder/Zurückbutton.png" /></a>
+</div>
+
+<div class="Überschrift">
+    <p>Marktplatz</p>
 </div>
 <div class="NavigationMarktplatz">
     <div class="SpielerInfoContainer">
@@ -74,10 +68,23 @@ include("funktionen.php");
         </div>
     </div>
 </div>
-
 <div class="WaffenContainer">
-    <p class="Überschrift">Spieleruebersicht</p>
+    <p class="Überschrift">Heilstube</p>
     <div class="Waffenliste">
-        <p><?php $newClass->AlleSpielerKampf($connection) ?></p>
+        <p><?php $newClass->AlleTraenkeLesen($connection) ?></p>
     </div>
 </div>
+<div class="WaffenContainer">
+    <p class="Überschrift">Waffenschmied</p>
+    <div class="Waffenliste">
+        <?php $newClass->AlleWaffenLesen($connection) ?>
+    </div>
+</div>
+
+<div class="WaffenContainer">
+    <p class="Überschrift">Rüstungsschmied</p>
+    <div class="Waffenliste">
+        <p><?php $newClass->AlleRüstungenLesen($connection) ?></p>
+    </div>
+</div>
+<br></br>`

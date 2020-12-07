@@ -1,9 +1,23 @@
 <?php
-include("dbconnect.php");
+if(file_exists('../logindata.php')) {
+	include("logindata.php");
+} else {
+   $host = $_ENV['DB_HOST'];
+   $user = $_ENV['DB_USER'];
+   $password = $_ENV['DB_PASSWORD'];
+   $db = $_ENV['DB_NAME'];
+}
+   $connection = new mysqli($host,$user,$password,$db);
+   if($connection)
 
 session_start();
-$newClass = new DBAktionen();
 
+// ======== Flow ====== //
+// has session?
+// use db
+// do request
+
+$newClass = new DBAktionen();
 
 if (!isset($_SESSION["Spieler"])) {
 	// Einloggen---------------------------------------------------------------------------------------------
@@ -295,20 +309,21 @@ if (isset($_POST["trankhochladen"])) {
 	move_uploaded_file($_FILES["trankbildhochladen"]['tmp_name'], $uploaddir . $filename . $fileextension);
 }
 
-class DBAktionen
-{
+class DBAktionen {
 
 	// Admin Link einblenden
-	function AdminEinblenden($connection, $player)
-	{
+	function AdminEinblenden($connection, $player)	{
 		$admin = $this->SpielerLesen($connection, "Rechte", $_SESSION["Spieler"]);
 		if ($admin == "Admin") {
-			echo '<a href="admin.php"><button>Admin</button></a>';
+            //echo '<a href="admin.php"><button>Admin</button></a>';
+            echo json_encode($return_arr);
 		}
-	}
+    }
+    
+
+
 	// JSON String des Spielers zurückgeben
-	function JSONStringSpieler($connection, $player)
-	{
+	function JSONStringSpieler($connection, $player) {
 		$return_arr = array();
 		$select = $connection->prepare("SELECT * FROM spieler WHERE spielername = ?");
 		$select->bind_param("s", $player);
@@ -334,8 +349,7 @@ class DBAktionen
 	}
 
 	// JSON String des Gegners zurückgeben
-	function JSONStringGegner($connection, $id)
-	{
+	function JSONStringGegner($connection, $id)	{
 		$return_arr = array();
 		$select = $connection->prepare("SELECT * FROM gegner WHERE gegnerid = ?");
 		$select->bind_param("i", $id);
@@ -356,16 +370,14 @@ class DBAktionen
 	}
 
 	// Spieler sperren
-	function Spielersperren($connection, $sperre, $spielername)
-	{
+	function Spielersperren($connection, $sperre, $spielername)	{
 		$update = $connection->prepare("UPDATE spieler SET gesperrt=? WHERE spielername=?");
 		$update->bind_param("is", $sperre, $spielername);
 		$update->execute();
 		$update->close();
 	}
 	// Gegner sperren
-	function Gegnersperren($connection, $sperre, $id)
-	{
+	function Gegnersperren($connection, $sperre, $id) {
 		$update = $connection->prepare("UPDATE gegner SET gesperrt = ? WHERE gegnerid=?");
 		$update->bind_param("ii", $sperre, $id);
 		$update->execute();
